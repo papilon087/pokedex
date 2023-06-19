@@ -28,10 +28,13 @@ export const Home = () => {
     <div>
       <Navbar />
       <Container maxWidth="false">
-        <Grid container>
+        <Grid container spacing={3}>
           {pokemons.map((pokemon, key) => (
-            <Grid item xs={3} key={key}>
-              <PokemonCard name={pokemon.data.name} />
+            <Grid item xs={2} key={key}>
+              <PokemonCard
+                name={pokemon.data.name}
+                image={pokemon.data.sprites.front_default}
+              />
             </Grid>
           ))}
         </Grid>
