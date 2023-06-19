@@ -1,28 +1,8 @@
 import React from "react";
-
-import Navbar from "./components/Navbar";
-import PokemonCard from "./components/PokemonCard";
-import { Container, Grid } from "@mui/material";
+import { Home } from "./Pages/Home";
 
 function App() {
-  return (
-    <div>
-      <Navbar />
-      <Container maxWidth="false">
-        <Grid container>
-          <Grid item xs={3}>
-            <PokemonCard />
-          </Grid>
-          <Grid item xs={3}>
-            <PokemonCard />
-          </Grid>
-          <Grid item xs={3}>
-            <PokemonCard />
-          </Grid>
-        </Grid>
-      </Container>
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;
