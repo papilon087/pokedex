@@ -48,6 +48,7 @@ export const Home = () => {
               <PokemonCard
                 name={pokemon.data.name}
                 image={pokemon.data.sprites.front_default}
+                types={pokemon.data.types}
               />
             </Grid>
           ))}
