@@ -12,21 +12,35 @@ export const Home = () => {
     getPokemons();
   }, []);
 
+  //Função para confumir a API dos Pokemons
   const getPokemons = () => {
     var endPoints = [];
     for (var i = 1; i < 50; i++) {
       endPoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
     }
-
-    var response = axios
+    axios
       .all(endPoints.map((endPoint) => axios.get(endPoint)))
       .then((res) => setPokemons(res));
-    return response;
+  };
+
+  //Função para filtrar pokemons pelo comparativo das letras dos nomes
+  const pokemonFilter = (name) => {
+    var filteredPokemons = [];
+    //Validando para mostrar todos os pokemons
+    if (name === "") {
+      getPokemons();
+    }
+    for (var i in pokemons) {
+      if (pokemons[i].data.name.includes(name)) {
+        filteredPokemons.push(pokemons[i]);
+      }
+    }
+    setPokemons(filteredPokemons);
   };
 
   return (
     <div>
-      <Navbar />
+      <Navbar pokemonFilter={pokemonFilter} />
       <Container maxWidth="false">
         <Grid container spacing={3}>
           {pokemons.map((pokemon, key) => (
