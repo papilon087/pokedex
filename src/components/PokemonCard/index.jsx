@@ -5,15 +5,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { CardActionArea } from "@mui/material";
+import { typeHandle } from "../../utils";
 
 export default function PokemonCard({ name, image, types }) {
-  //Função para retornar os tipos dos pokemons
-  const typeHandle = () => {
-    if (types[1]) {
-      return types[0].type.name + " | " + types[1].type.name;
-    }
-    return types[0].type.name;
-  };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -33,20 +27,11 @@ export default function PokemonCard({ name, image, types }) {
               {name}
             </Typography>
             <Typography gutterBottom variant="caption" component="div">
-              {typeHandle()}
+              {typeHandle(types)}
             </Typography>
           </Box>
-          {/* <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography> */}
         </CardContent>
       </CardActionArea>
-      {/* <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions> */}
     </Card>
   );
 }
